@@ -2,8 +2,8 @@ import express, { Express } from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import { HealthCheckController } from './controllers/healthCheck'
-import { postgresDB } from './repository/postgresDB'
 import { LinksController } from './controllers/links'
+import { mongoDB } from './repository/mongoDB'
 
 dotenv.config()
 
@@ -23,10 +23,13 @@ class App {
             this.app.listen(process.env.APP_PORT, () => {
                 console.log(`Server is running on port ${process.env.APP_PORT}`)
             })
-            await postgresDB.init()
+            await mongoDB.init()
         } catch(err: unknown){
             console.log(err);
         }
+        process.on('exit', () => {
+            mongoDB.close()
+        })
     }
 }
 
