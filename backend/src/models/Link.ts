@@ -3,10 +3,6 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const LinkSchema = new Schema({
-    id: {
-        type: String,
-        require: true
-    },
     shortUrl: {
         type: String,
         require: true
@@ -17,5 +13,6 @@ const LinkSchema = new Schema({
     }
 })
 
-export const Link = mongoose.model('Link', LinkSchema)
+const Link = mongoose.model('Link', LinkSchema)
+export default Link
 

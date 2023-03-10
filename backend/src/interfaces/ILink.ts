@@ -1,5 +1,5 @@
 export default interface ILink {
-    id: string
+    _id: string
     shortUrl: string
     originalUrl: string
 }
