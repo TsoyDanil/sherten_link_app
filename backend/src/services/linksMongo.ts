@@ -1,8 +1,10 @@
+import shortid from "shortid"
 import { v4 } from "uuid"
 import { EStatuses } from "../enum/EStatuses"
 import ILink from "../interfaces/ILink"
 import ILinkDto from "../interfaces/ILinkDto"
 import IResponse from "../interfaces/IResponse"
+import Link from "../models/Link"
 import { mongoDB } from "../repository/mongoDB"
 
 export class LinksServiceMongo {
@@ -29,16 +31,14 @@ export class LinksServiceMongo {
 
     public addLink = async(linkDto: ILinkDto): Promise<IResponse> => {
         try{
-            if (!linkDto.originalUrl) throw new Error('Origin URL should appear')
-            const link: any = {
-                originalUrl: linkDto.originalUrl,
-                shortUrl: new Date().getDate().toString()
-            }
-            await mongoDB.getDB().collection('links').insertOne({...link})
+            if (!linkDto.originalUrl || linkDto.originalUrl.trim() === '') throw new Error('Origin URL should appear')
+            const linkBody: ILink = {...linkDto, shortUrl: shortid.generate()}
+            const link = new Link(linkBody)
+            await link.save()
             const response: IResponse = {
                 status: EStatuses.SUCCESS,
-                result: [],
-                extraMessage: 'New Link added'
+                result: link as any,
+                extraMessage: 'New link created'
             }
             return response
         } catch(err: unknown){
