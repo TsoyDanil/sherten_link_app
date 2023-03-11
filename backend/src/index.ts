@@ -3,8 +3,8 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import { config } from './index.config'
-import healthCheck from './controllers/healthCheck'
-import links from './controllers/links'
+import healthCheck from './routes/healthCheck'
+import links from './routes/links'
 import IResponse from "./interfaces/IResponse";
 import { linksServiceMongo } from "./services/linksMongo";
 import { EStatuses } from "./enum/EStatuses";

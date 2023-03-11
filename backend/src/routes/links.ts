@@ -24,7 +24,8 @@ router.post('/', async (req: Request, res: Response) => {
         const linksDto: ILinkDto = req.body
         const response = await linksServiceMongo.addLink(linksDto)
         if (response.status === EStatuses.SUCCESS){
-            res.send(` http://localhost:8000/${response.result?.shortUrl}`)
+            // res.send(`http://localhost:8000/${response.result?.shortUrl}`)
+            res.send(response)
         } else{
             res.status(418).send(response)
         }

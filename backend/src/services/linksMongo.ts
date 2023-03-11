@@ -10,11 +10,11 @@ export class LinksServiceMongo {
 
     public getLinkByShortUrl = async(shortUrl: string): Promise<IResponse> => {
         try{
-            const link: any = await mongoDB.getDB().collection('links').findOne({shortUrl: shortUrl})
+            const link = await mongoDB.getDB().collection('links').findOne({shortUrl: shortUrl})
             if (!link) throw new Error('No links found')
             const response: IResponse = {
                 status: EStatuses.SUCCESS,
-                result: link,
+                result: link as any,
                 extraMessage: 'Link found'
             }
             return response
@@ -31,10 +31,11 @@ export class LinksServiceMongo {
     
     public getLinks = async() => {
         try{
-            const data = await mongoDB.getDB().collection('links').find().toArray()
+            const links = await mongoDB.getDB().collection('links').find().toArray()
+            if (!links) throw new Error('No links found')
             const response: IResponse = {
                 status: EStatuses.SUCCESS,
-                result: data as any,
+                result: links as any,
                 extraMessage: 'Links found'
             }
             return response
