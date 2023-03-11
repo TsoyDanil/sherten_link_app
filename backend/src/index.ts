@@ -23,8 +23,7 @@ app.get('/:shortUrl', async (req: Request, res: Response) => {
     try{
         const response: IResponse = await linksServiceMongo.getLinkByShortUrl(req.params.shortUrl)
         if (response.status === EStatuses.SUCCESS){
-            // @ts-ignore
-            res.status(301).redirect(response.result.originalUrl)
+            res.status(301).redirect(response.result!.originalUrl)
         } else{
             res.status(418).send(response)
         }

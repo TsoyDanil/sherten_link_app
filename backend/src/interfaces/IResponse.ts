@@ -3,6 +3,6 @@ import ILink from "./ILink";
 
 export default interface IResponse {
     status: EStatuses
-    result: ILink[] | ILink
+    result: ILink | null
     extraMessage: string
 }

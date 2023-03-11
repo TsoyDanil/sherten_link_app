@@ -22,7 +22,7 @@ export class LinksServiceMongo {
             const error = err as Error
             const response: IResponse = {
                 status: EStatuses.FAILURE,
-                result: [],
+                result: null,
                 extraMessage: error.message
             }
             return response
@@ -42,7 +42,7 @@ export class LinksServiceMongo {
             const error = err as Error
             const response: IResponse = {
                 status: EStatuses.FAILURE,
-                result: [],
+                result: null,
                 extraMessage: error.message
             }
             return response
@@ -65,7 +65,7 @@ export class LinksServiceMongo {
             const error = err as Error
             const response: IResponse = {
                 status: EStatuses.FAILURE,
-                result: [],
+                result: null,
                 extraMessage: error.message
             }
             return response
