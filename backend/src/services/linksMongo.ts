@@ -1,5 +1,4 @@
 import shortid from "shortid"
-import { v4 } from "uuid"
 import { EStatuses } from "../enum/EStatuses"
 import ILink from "../interfaces/ILink"
 import ILinkDto from "../interfaces/ILinkDto"
@@ -8,6 +7,27 @@ import Link from "../models/Link"
 import { mongoDB } from "../repository/mongoDB"
 
 export class LinksServiceMongo {
+
+    public getLinkByShortUrl = async(shortUrl: string): Promise<IResponse> => {
+        try{
+            const link: any = await mongoDB.getDB().collection('links').findOne({shortUrl: shortUrl})
+            if (!link) throw new Error('No links found')
+            const response: IResponse = {
+                status: EStatuses.SUCCESS,
+                result: link,
+                extraMessage: 'Link found'
+            }
+            return response
+        } catch(err: unknown){
+            const error = err as Error
+            const response: IResponse = {
+                status: EStatuses.FAILURE,
+                result: [],
+                extraMessage: error.message
+            }
+            return response
+        }
+    }
     
     public getLinks = async() => {
         try{
