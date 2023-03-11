@@ -1,0 +1,11 @@
+.LinkShorter{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.LinkShorter_header{
+    margin: 5px 0;
+}

@@ -1,9 +1,10 @@
-import { FunctionComponent, ReactElement } from "react";
+import { FunctionComponent, ReactElement, useEffect } from "react";
+import LinkShorter from "./containers/LinkShorter/LinkShorter";
 
 const App: FunctionComponent = (): ReactElement => {
   return(
     <>
-      This is App
+      <LinkShorter/>
     </>
   )
 }

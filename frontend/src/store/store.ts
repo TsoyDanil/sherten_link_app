@@ -1,10 +1,11 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
 import { useDispatch } from 'react-redux'
+import { linksSlice } from "./links/links.slice"
 
 const makeStore = () => {
     return configureStore({
         reducer:{
-            
+            links: linksSlice.reducer
         }
     })
 }

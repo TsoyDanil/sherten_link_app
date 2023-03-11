@@ -34,7 +34,7 @@ export const linksSlice = createSlice({
         })
         .addCase(addLink.fulfilled, (state, action) => {
             state.linksLoading = false
-            state.shortenLink = action.payload.result?.originalUrl
+            state.shortenLink = action.payload.result?.shortUrl
         })
     }
 })
