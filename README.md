@@ -49,7 +49,7 @@
         - "__v": 0
     - },
     - "extraMessage": "New link created"
-}
+- }
 - Для создания уороченной ссылки применил shortid. Нашел в интернете
 
 ## Get запрос по http://localhost:8000/:shortUrl
