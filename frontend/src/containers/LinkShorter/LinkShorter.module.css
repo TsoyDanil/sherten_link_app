@@ -1,11 +1,70 @@
 .LinkShorter{
     height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: linear-gradient( rgba(32, 32, 32, 0.5), rgba(0, 0, 0, 0.5) ), url('../../assets/bgimage.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
+
 .LinkShorter_header{
-    margin: 5px 0;
+    margin: 0;
+}
+
+.LinkShorter_text{
+    margin-top: 5px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.Interaction_block{
+    display: flex;
+    align-items: center;
+    max-width: 500px;
+    width: 100%;
+    margin: 5px auto;
+}
+
+.Interaction_input{
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border-radius: 5px 0 0 5px;
+    border: 3px solid rgb(27, 70, 198);
+    font-family: 'Kanit', sans-serif;
+    font-weight: bold;
+}
+
+.Interaction_input:focus{
+    border: 3px solid black;
+    background: rgb(163, 162, 162);
+}
+
+.Interaction_button{
+    cursor: pointer;
+    height: 100%;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    background-color: rgb(27, 70, 198);
+    font-family: 'Kanit', sans-serif;
+    transition: 0.2s;
+    color: white;
+}
+
+.Interaction_button:hover{
+    background-color: rgb(16, 43, 124);
+}
+
+.LinkShorter_link{
+    text-decoration: none;
+    color: white;
+    transition: 0.1s;
+}
+
+.LinkShorter_link:hover{
+    color: rgb(99, 70, 243);
 }

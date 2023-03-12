@@ -34,12 +34,15 @@ const LinkShorter: FunctionComponent = (): ReactElement => {
     return(
         <div className={styles.LinkShorter}>
             {linksLoading ? <Preloader/> : null}
-            <h2 className={styles.LinkShorter_header}>Shorten your link!</h2>
-            <input onChange={inputHandler} value={link} placeholder={'Inset link!'}/>
-            <button disabled={buttonDisabled} onClick={shortenLinkHandler}>Shorten!</button>
-            <p>Your link will be here:</p>
+            <h1 className={styles.LinkShorter_header}>Shorten your link!</h1>
+            <p className={styles.LinkShorter_text}>Simplify your link!</p>
+            <div className={styles.Interaction_block}>
+                <input className={styles.Interaction_input} onChange={inputHandler} value={link} placeholder={'Inset link!'}/>
+                <button className={styles.Interaction_button} disabled={buttonDisabled} onClick={shortenLinkHandler}>Shorten!</button>
+            </div>
+            <p className={styles.LinkShorter_text}>Your link will be here:</p>
             {
-                shortenLink ? <a href={`http://localhost:8000/${shortenLink}`}>{`http://localhost:8000/${shortenLink}`}</a> : null
+                shortenLink ? <a className={styles.LinkShorter_link} href={`http://localhost:8000/${shortenLink}`}>{`http://localhost:8000/${shortenLink}`}</a> : null
             }
         </div>
     )
