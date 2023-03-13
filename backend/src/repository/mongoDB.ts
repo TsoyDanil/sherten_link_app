@@ -9,6 +9,7 @@ export class MongoDB {
     constructor(){
         this.client = new MongoClient(process.env.MONGO_CLIENT_URL || '')
         this.db = this.client.db(config.mongoServerName)
+        console.log('Mongo connected');
     }
     
     public getDB = (): Db => {
@@ -17,8 +18,6 @@ export class MongoDB {
 
     public init = async(): Promise<void> => {
         this.client = await MongoClient.connect(process.env.MONGO_CLIENT_URL || '')
-        this.db = this.client.db('myLinks')
-        console.log('Mongo connected');
     }
 
     public close = async(): Promise<void> => {
